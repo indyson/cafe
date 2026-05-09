@@ -5,6 +5,8 @@ import { useCursorDroplet } from './useCursorDroplet'
 import { useParallax } from './useParallax'
 import { WelcomePage } from './WelcomePage'
 
+const baseUrl = import.meta.env.BASE_URL
+
 const menuItems = [
   {
     name: 'The Formula',
@@ -34,7 +36,7 @@ const galleryImages = [
     alt: 'Coffee beans on a table',
   },
   {
-    src: '/breakslow-E6RTpqvOasU-unsplash.jpg',
+    src: `${baseUrl}breakslow-E6RTpqvOasU-unsplash.jpg`,
     alt: 'Minimal cafe interior',
   },
   {
@@ -65,7 +67,7 @@ function App() {
       <nav className={`topbar ${mobileNavOpen ? 'nav-open' : ''}`}>
         <div className="brand">
           <img
-            src="/jocelyn-morales-JJeb7OHQ7a8-unsplash.jpg"
+            src={`${baseUrl}jocelyn-morales-JJeb7OHQ7a8-unsplash.jpg`}
             alt="Latte Theory logo"
             className="brand-mark"
           />

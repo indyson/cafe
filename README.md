@@ -71,6 +71,19 @@ npm run preview
 npm run lint
 ```
 
+## GitHub Pages Hosting
+
+This project is configured for GitHub Pages under the repository path `/Latte-Theory/`.
+
+To publish it:
+
+1. Push the repository to GitHub.
+2. In the GitHub repository settings, open `Pages`.
+3. Set the source to `GitHub Actions`.
+4. Push to `main`; the workflow will build and deploy automatically.
+
+The deployed site will be available at `https://Afsar-D.github.io/Latte-Theory/` after the workflow completes.
+
 ## Project Structure
 
 ```text
