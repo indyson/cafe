@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Latte Theory">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6f8f55"/>
+      <stop offset="1" stop-color="#40531b"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="20" y1="22" x2="44" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffaf2"/>
+      <stop offset="1" stop-color="#efe6d8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#bg)"/>
+  <path d="M18 24h20v12c0 5.523-4.477 10-10 10s-10-4.477-10-10V24Z" fill="url(#cup)"/>
+  <path d="M38 27h4c2.761 0 5 2.239 5 5s-2.239 5-5 5h-4" stroke="#f8f2e8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M20 48h24" stroke="#f8f2e8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M26 17c0-2 1.5-3 1.5-5M32 17c0-2 1.5-3 1.5-5M38 17c0-2 1.5-3 1.5-5" stroke="#f8f2e8" stroke-width="3" stroke-linecap="round"/>
+</svg>
