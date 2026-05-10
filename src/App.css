@@ -265,7 +265,6 @@ h2,
 .hero-visual {
   position: relative;
   min-height: clamp(360px, 52svh, 560px);
-  opacity: 1;
 }
 
 .hero-image {
@@ -775,10 +774,6 @@ h2,
   .hero-visual {
     order: 2;
     min-height: 240px;
-    opacity: 0;
-    transform: translateY(64px);
-    transition: opacity 360ms ease, transform 360ms ease;
-    will-change: opacity, transform;
   }
 
   .hero-image {
@@ -819,7 +814,6 @@ h2,
     display: grid;
     gap: 8px;
     margin-bottom: 12px;
-    transition: opacity 360ms ease, transform 360ms ease;
   }
 
   .menu-section .section-heading h2 {
@@ -896,26 +890,12 @@ h2,
   .footer-section {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
     gap: 16px;
-  }
-
-  .footer-section > div:first-child {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .footer-section h2,
-  .footer-section p {
-    text-align: center;
   }
 
   .footer-links {
     width: 100%;
     justify-content: center;
-    align-items: center;
   }
 
   .gallery-section {
@@ -931,7 +911,7 @@ h2,
   }
 
   .footer-section {
-    min-height: 22svh;
+    min-height: 34svh;
     padding: clamp(14px, 4svh, 22px);
     gap: clamp(10px, 2.4svh, 16px);
   }
