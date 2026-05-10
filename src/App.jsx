@@ -50,13 +50,61 @@ function App() {
   const heroRef = useInView()
   const heroParallaxRef = useParallax(0.3)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [heroVisualStyle, setHeroVisualStyle] = useState({})
+  const [menuHeadingStyle, setMenuHeadingStyle] = useState({})
+  const heroH1Ref = useRef(null)
   const aboutRef = useInView()
   const aboutParallaxRef = useParallax(0.25)
   const menuRef = useInView()
-  const menuParallaxRef = useParallax(0.2)
+  const menuHeadingRef = useRef(null)
   const galleryRef = useInView()
   const footerRef = useInView()
   const footerParallaxRef = useParallax(0.35)
+
+  useEffect(() => {
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
+
+    const handleScroll = () => {
+      const isMobileViewport = window.innerWidth <= 640
+
+      if (heroH1Ref.current) {
+        const rect = heroH1Ref.current.getBoundingClientRect()
+        if (isMobileViewport) {
+          const start = window.innerHeight * 0.25
+          const progress = clamp(1 - rect.top / start, 0, 1)
+          setHeroVisualStyle({
+            opacity: progress,
+            transform: `translateY(${(1 - progress) * 64}px)`,
+          })
+        } else {
+          setHeroVisualStyle({})
+        }
+      }
+
+      if (menuHeadingRef.current) {
+        const rect = menuHeadingRef.current.getBoundingClientRect()
+        if (isMobileViewport) {
+          const fadeStart = window.innerHeight * 0.32
+          const fadeEnd = -menuHeadingRef.current.offsetHeight * 0.45
+          const progress = clamp((fadeStart - rect.top) / (fadeStart - fadeEnd), 0, 1)
+          setMenuHeadingStyle({
+            opacity: 1 - progress,
+            transform: `translateY(${-progress * 20}px)`,
+          })
+        } else {
+          setMenuHeadingStyle({})
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
 
   return (
     <div className="page-shell">
@@ -99,7 +147,7 @@ function App() {
         <section className="hero-section" ref={heroRef}>
           <div className="hero-copy" ref={heroParallaxRef}>
             <p className="eyebrow">Coffee, calibrated</p>
-            <h1>Where chemistry meets the morning cup.</h1>
+            <h1 ref={heroH1Ref}>Where chemistry meets the morning cup.</h1>
             <p className="hero-text">
               Latte Theory treats every pour as a hypothesis and every sip as proof.
               Sustainably sourced beans, precise extraction, and a calm, minimal space
@@ -115,7 +163,7 @@ function App() {
             </div>
           </div>
 
-          <div className="hero-visual">
+          <div className="hero-visual" style={heroVisualStyle}>
             <img
               src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1600"
               alt="Coffee being prepared in a warm cafe"
@@ -157,7 +205,7 @@ function App() {
         </section>
 
         <section id="menu" className="menu-section" ref={menuRef}>
-          <div className="section-heading" ref={menuParallaxRef}>
+          <div ref={menuHeadingRef} className="section-heading" style={menuHeadingStyle}>
             <p className="eyebrow">Featured experiments</p>
             <h2>Small menu, clear options.</h2>
           </div>
